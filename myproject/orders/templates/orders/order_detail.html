@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Details</title>
+</head>
+<body>
+    <h1>Order {{ order.id }}</h1>
+    <p>Customer: {{ order.customer.name }}</p>
+    <p>Total Bill: {{ order.total_bill }}</p>
+    <p>Advance: {{ order.advance }}</p>
+    <p>Delivery Date: {{ order.delivery_date }}</p>
+    <p>Status: {{ order.status }}</p>
+    <h2>Items</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.style }} - {{ item.worker_name }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Payments</h2>
+    <ul>
+        {% for payment in order.payments.all %}
+            <li>{{ payment.payment_date }} - {{ payment.amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
